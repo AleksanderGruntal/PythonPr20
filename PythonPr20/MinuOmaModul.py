@@ -1,5 +1,6 @@
 ﻿from string import *
 from time import sleep
+from os import path, remove
 def registreerimine(kasutajad:list,paroolid:list)->any:
     """Funktsioon
     """
@@ -64,3 +65,54 @@ def nimi_või_parooli(list_:list):
         muutuja=input("Uus nimi või parool: ")
         list_[indeks]=muutuja
     return list_
+def loe_failist(fail:str)->list:
+    """Funktsioon loeb tekst *.txt failist
+    """
+    f=open(fail,"r",encoding="utf-8")
+    järjend=[]
+    for rida in f:
+        järjend.append(rida.strip())
+    f.close
+    return järjend
+def kirjuta_failisse(fail:str,järjend=[]):
+    """Salvesta tekst failisse
+    """
+    n=int(input("Mitu: "))
+    for i in range(n):
+        järjend.append(input(f"{i+1}. sõna: "))
+    f=open(fail,"a",encoding="utf-8")
+    for element in järjend:
+        f.white(element+"\n")
+    f.close()
+def ümber_kirjuta_fail(fail:str):
+    """
+    """
+    f=open(fail,"w")
+    text=input("Sisesta tekst:")
+    f.white(text+"\n")
+    f.close()
+def failide_kustutamine():
+    """
+    """
+    failinimi=input("Mis fail tahad eemaldada?") #path.isdir("Kaust")
+    if path.isfile(failinimi):
+        remove(failinimi)
+        print(f"Fail {failinimi} oli kustutatud")
+    else:
+        print(f"Fail {failinimi} puudub")
+    print()
+def failed_KS(fail:str):
+    """
+    """
+    fail=input(fail,"")
+def kirjuta_failisse(fail:str,järjend=[]):
+    """
+    """
+    n=int(input("Mitu: "))
+    f=open(fail,"w")
+    for i in range(n):
+        järjend.append(input(f"{i+1}. sõna: "))
+    f=open(fail,"w",encoding="utf-8")
+    for element in järjend:
+        f.white(element+"\n")
+    f.close()
